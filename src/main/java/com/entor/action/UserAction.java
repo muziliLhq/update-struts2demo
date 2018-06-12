@@ -5,9 +5,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
+@Controller
+@Scope("prototype")
 public class UserAction extends ActionSupport implements ModelDriven<UserModel> {
-    private static final Logger LOGGER = LogManager.getLogger(RegistAction.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserAction.class);
 
     private UserModel userModel;
 
@@ -45,5 +49,9 @@ public class UserAction extends ActionSupport implements ModelDriven<UserModel> 
         LOGGER.info("birth", userModel.getBirth());
 
         return "regist";
+    }
+
+    public String helloWorld() {
+        return "helloworld";
     }
 }
